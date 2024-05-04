@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import './App.css';
+import MasterLayout from './components/MasterLayout/MasterLayout'
+import Home from './components/Home/Home'
+import Products from './components/Products/Products'
+import Brands from './components/Brands/Brands'
+import Category from './components/Category/Catefory'
+import SignIn from './components/SignIn/SignIn'
+import SignUp from './components/SignUp/SignUp'
+import NotFound from './components/NotFound/NotFound'
+import Cart from './components/Carts/Cart'
+import CounterContextProvider from './components/Context/counterContext';
+import UserContextProvider from './components/Context/TokenContext';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import Details from './components/Details/Details'
+import CartContextProvider from './components/Context/CartContext';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+import CheckOut from './components/CheckOut/CheckOut';
+import CheckOut2 from './components/CheckOut2/CheckOut2';
+
+const router= createBrowserRouter([
+  {path:'', element:<MasterLayout/>,
+children:[
+  {path:'home', element:<ProtectedRoute><Home/></ProtectedRoute>},
+  {path:'', element:<ProtectedRoute><Home/></ProtectedRoute>},
+  {path:'products', element:<ProtectedRoute><Products/></ProtectedRoute>},
+  {path:'brands', element:<ProtectedRoute><Brands/></ProtectedRoute>},
+  {path:'category', element:<ProtectedRoute><Category/></ProtectedRoute>},
+  {path:'checkout', element:<ProtectedRoute><CheckOut/></ProtectedRoute>},
+  {path:'checkout2', element:<ProtectedRoute><CheckOut2/></ProtectedRoute>},
+  {path:"/details/:id", element:<ProtectedRoute><Details/></ProtectedRoute>},
+   {path:'signin', element:<SignIn/>},
+   {path:'signup', element:<SignUp/>},
+  {path:'*', element:<NotFound/>},
+  {path:'cart', element:<ProtectedRoute><Cart/></ProtectedRoute>},
+]}
+])
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {/* <CounterContextProvider> */}
+    <CartContextProvider>
+      <UserContextProvider>
+<RouterProvider router={router}>
+<ToastContainer theme='colored'/>
+</RouterProvider>
+</UserContextProvider>
+</CartContextProvider>
+{/* </CounterContextProvider> */}
+  </>
   );
 }
+
 
 export default App;
