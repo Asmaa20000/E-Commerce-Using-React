@@ -96,7 +96,9 @@ let {usertoken,settoken}= useContext(userContext) ;
               {errorMessage}
             </div>
           )}
+         
           <p className="text-muted">Don't have an account? <Link to="signup" className="ms-2 text-main fw-bold">Register</Link></p>
+          <p className="text-muted">Forget Password?  <Link to="/forgetpassword" className="ms-2 text-main fw-bold">Forget Password</Link></p>
         </div>
       </form>
     </>

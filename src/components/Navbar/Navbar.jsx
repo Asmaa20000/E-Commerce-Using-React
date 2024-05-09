@@ -62,7 +62,10 @@ export default function Navbar() {
                >Brands</Link>
            </li>
 
-          
+           <li className ="nav-item">
+             <Link className ="nav-link active"to='recipe' aria-current="page"
+               >Recipies</Link>
+           </li>
          </ul>
           :''}
          

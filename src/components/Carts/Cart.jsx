@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Cart() {
   const [data ,setData]  = useState([]);
   const [price ,setPrice]  = useState([]);
-  let {getCart ,UpdateCart , DeleteCart ,setCartNumber } = useContext(CartContext);
+  let {getCart,UpdateCart , DeleteCart ,setCartNumber } = useContext(CartContext);
   useEffect (()=>{
     (async()=>{
       let {data} = await getCart();
@@ -39,9 +39,12 @@ export default function Cart() {
   return (
     <div className='container'>
       <h2>Shopping Cart</h2>
+      <div className='fw-bold' style={{ color: "#b5838d" }}>
       <Link to='/checkout'>
-    online  Payment
+    online  Payment 
       </Link>
+      </div>
+     
     
     
       <div className="row">

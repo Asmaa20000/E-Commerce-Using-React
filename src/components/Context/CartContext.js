@@ -21,7 +21,7 @@ function AddToCart(id){
 }
 
 
-function UpdateCart(id, count){
+function UpdateCart(id, count){ 
 
   return axios.put(
       `${BaseUrl}/api/v1/cart/${id}`,
